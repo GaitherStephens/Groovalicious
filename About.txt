@@ -7,4 +7,7 @@ FEATURES:
 Dark and Light versions
 Custom Opacity
 Custom Text Colors
-24 hour mode
+12 & 24 hour modes
+Multi-language support(en, de, fr, it, nl, pl, pt, ru, sp)
+System Monitor
+Weather Temperature & Current Condition
