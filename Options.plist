@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF~8"?>
+<!DOCTYPE plist PUBLIC "~//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList~1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+	<key>default</key>
+	<false/>
+	<key>label</key>
+	<string>24hr</string>
+	<key>name</key>
+	<string>twentyfourhourOp</string>
+	<key>type</key>
+	<string>switch</string>
+</dict>
+	<dict>
+		<key>default</key>
+		<string>Dark</string>
+		<key>label</key>
+		<string>Widget Color</string>
+		<key>name</key>
+		<string>rgbOp</string>
+		<key>options</key>
+		<dict>
+			<key>Dark</key>
+			<string>0</string>
+			<key>Light</key>
+			<string>255</string>
+		</dict>
+		<key>type</key>
+		<string>select</string>
+	</dict>
+	<dict>
+		<key>default</key>
+		<string>100%</string>
+		<key>label</key>
+		<string>Widget Opacity</string>
+		<key>name</key>
+		<string>widgetOpacityOp</string>
+		<key>options</key>
+		<dict>
+			<key>10%</key>
+			<string>.1</string>
+			<key>20%</key>
+			<string>.2</string>
+			<key>30%</key>
+			<string>.3</string>
+			<key>40%</key>
+			<string>.4</string>
+			<key>50%</key>
+			<string>.5</string>
+			<key>60%</key>
+			<string>.6</string>
+			<key>70%</key>
+			<string>.7</string>
+			<key>80%</key>
+			<string>.8</string>
+			<key>90%</key>
+			<string>.9</string>
+			<key>100%</key>
+			<string>1</string>
+		</dict>
+		<key>type</key>
+		<string>select</string>
+	</dict>
+	<dict>
+		<key>default</key>
+		<string>Gray</string>
+		<key>label</key>
+		<string>Text Color</string>
+		<key>name</key>
+		<string>textColorOp</string>
+		<key>options</key>
+		<dict>
+			<key>White</key>
+			<string>White</string>
+			<key>Light Gray</key>
+			<string>LightGray</string>
+			<key>Gray</key>
+			<string>Gray</string>
+			<key>Dark Gray</key>
+			<string>DarkGray</string>
+			<key>Black</key>
+			<string>Black</string>
+			<key>Red</key>
+			<string>Red</string>
+			<key>Green</key>
+			<string>Green</string>
+			<key>Blue</key>
+			<string>Blue</string>
+			<key>Yellow</key>
+			<string>Yellow</string>
+			<key>Orange</key>
+			<string>Orange</string>
+		</dict>
+		<key>type</key>
+		<string>select</string>
+	</dict>
+	<dict>
+		<key>default</key>
+		<string>01s</string>
+		<key>label</key>
+		<string>Stats Refresh Rate</string>
+		<key>name</key>
+		<string>statsUpdateTimeOp</string>
+		<key>options</key>
+		<dict>
+			<key>01s</key>
+			<string>1000</string>
+			<key>05s</key>
+			<string>5000</string>
+			<key>10s</key>
+			<string>10000</string>
+			<key>30s</key>
+			<string>30000</string>
+			<key>60s</key>
+			<string>60000</string>
+		</dict>
+		<key>type</key>
+		<string>select</string>
+	</dict>
+</array>
+</plist>
