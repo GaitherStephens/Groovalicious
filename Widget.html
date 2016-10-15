@@ -99,6 +99,8 @@
       var statsUpdateTime = statsUpdateTimeOp;
       var twentyfourhour = twentyfourhourOp;
       var widgetLanguage = widgetLanguageOp;
+      var useStats = useStatsOp;
+      var useWeather = useWeatherOp;
 
       //initializes widget
       window.onload = function() {
@@ -230,6 +232,16 @@
       }else if(widgetLanguage === "pt"){
         document.getElementById("day-name-text").innerHTML = "DOM SEG TER QUA QUI SEX SAB";
         document.getElementById("month-name-text").innerHTML = "JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ";
+      }
+
+      //hides stats ring
+      if(!useStats){
+        document.getElementById("stats").style.opacity = 0;
+      }
+
+      //hides weather ring
+      if(!useWeather){
+        document.getElementById("weather").style.opacity = 0;
       }
 
       //]]>

@@ -1,7 +1,5 @@
 Groovalicious iOS widget is sharp, elegant, and a crafted masterpiece.
 
-**THIS IS A PORT OF CIRCULAR CALENDAR DISPLAY BY MATTHEW JUGGINS**
-
 FEATURES:
 
 Dark and Light versions
@@ -11,3 +9,11 @@ Custom Text Colors
 Multi-language support(en, de, fr, it, nl, pl, pt, ru, sp)
 System Monitor
 Weather Temperature & Current Condition
+Compatible with XenHTML & iWidgets
+
+**CREDITS**
+Based on and inspired by:
+JunesiPhone - http://www.junesiphone.com/
+Matchstic - www.http://incendo.ws/
+Circular Calendar Display by Matthew Juggins - http://www.freefrontend.com/css-calendars/circular-calendar-display-html-css-javascript/
+roundClock by Evan Bowie - https://github.com/phaseOne/roundClock
