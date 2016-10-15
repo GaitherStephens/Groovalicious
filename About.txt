@@ -1,0 +1,10 @@
+Groovalicious iOS widget is sharp, elegant, and a crafted masterpiece.
+
+**THIS IS A PORT OF CIRCULAR CALENDAR DISPLAY BY MATTHEW JUGGINS**
+
+FEATURES:
+
+Dark and Light versions
+Custom Opacity
+Custom Text Colors
+24 hour mode
