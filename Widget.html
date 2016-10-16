@@ -55,6 +55,10 @@
       <div class='icon' id="icon"><img id='wxicon' src="images/wx/27.svg" height="60"></img></div>
       <p class='temperature' id='temperature'>43</p>
     </div>
+    <div class='side-ring' id='music'>
+      <div class='artwork' id="artwork"><img id='art' src="images/wx/27.svg" height="60"></img></div>
+      <p class='h2' id='artist'>Prince</p>
+    </div>
     <div class='side-ring' id='stats'>
       <div class='bars'>
         <div class='bar'>
@@ -100,7 +104,9 @@
       var twentyfourhour = twentyfourhourOp;
       var widgetLanguage = widgetLanguageOp;
       var useStats = useStatsOp;
+      var useAlbumArt = useAlbumArtOp;
       var useWeather = useWeatherOp;
+      var wxRefresh = wxRefreshOp;
 
       //initializes widget
       window.onload = function() {
@@ -109,14 +115,21 @@
         [IS2Weather registerForWeatherUpdatesWithIdentifier:widgetIdentifier andCallback:^ void () {
           updateWx();
         }];
-        updateWx();
-        refreshWx();
+        [IS2Weather setWeatherUpdateTimeInterval:wxRefresh forRequester:widgetIdentifier];
+
+        if(useAlbumArt){
+          //registers widget for media updates
+          [IS2Media registerForNowPlayingNotificationsWithIdentifier:widgetIdentifier andCallback:^ void () {
+              updateMedia();
+          }];
+        }
       }
 
       // Make sure to de-register ourselves when removed from the user's screen.
       window.onunload = function() {
         [IS2Weather unregisterForUpdatesWithIdentifier:widgetIdentifier];
         [IS2Weather removeRequesterForWeatherTimeInterval:widgetIdentifier];
+        [IS2Media unregisterForNotificationsWithIdentifier:widgetIdentifier];
         return null;
       };
 
@@ -212,6 +225,16 @@
       var h2Elements = document.getElementsByTagName("h2");
       for(var i = 0; i < h2Elements.length; i++){
         h2Elements[i].style.color = textColor;
+      }
+
+      function updateMedia(){
+        document.getElementById("music").style.opacity = 1;
+        document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        var elem = document.getElementById("art");
+        elem.setAttribute("height", "60");
+        elem.setAttribute("width", "60");
+        elem.setAttribute("src", "" + [IS2Media currentTrackArtworkBase64] + "");
+        document.getElementById("artwork").appendChild(elem);
       }
 
       document.getElementById("stats").style.color = textColor;
