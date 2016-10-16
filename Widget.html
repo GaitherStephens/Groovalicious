@@ -111,11 +111,17 @@
       //initializes widget
       window.onload = function() {
 
-        //registers widget with IS2
-        [IS2Weather registerForWeatherUpdatesWithIdentifier:widgetIdentifier andCallback:^ void () {
-          updateWx();
-        }];
-        [IS2Weather setWeatherUpdateTimeInterval:wxRefresh forRequester:widgetIdentifier];
+        if(useStats){
+          updateStats();
+        }
+
+        if(useWeather){
+          //registers widget with IS2
+          [IS2Weather registerForWeatherUpdatesWithIdentifier:widgetIdentifier andCallback:^ void () {
+            updateWx();
+          }];
+          [IS2Weather setWeatherUpdateTimeInterval:wxRefresh forRequester:widgetIdentifier];
+        }
 
         if(useAlbumArt){
           //registers widget for media updates
@@ -140,7 +146,7 @@
       }
 
       // Give column representing passed days and the current day this week a height
-      function loadStats() {
+      function updateStats() {
           $("#x1").css({
             'height' : ([IS2System batteryPercent] / 2) + 'px',
           });
@@ -162,7 +168,7 @@
           $("#x7").css({
             'height' : ([IS2System getBrightness] * 50) + 'px',
           });
-          setTimeout(loadStats, statsUpdateTime);
+          setTimeout(updateStats, statsUpdateTime);
       }
 
       function updateWx(){
@@ -174,7 +180,6 @@
         document.getElementById("temperature").innerHTML = [IS2Weather currentTemperature] + "&deg";
         document.getElementById("temperature").style.color = tempColor([IS2Weather currentTemperature])
       }
-      loadStats();
 
       function tempColor(c){
         if([IS2Weather isCelsius]){
