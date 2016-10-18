@@ -34,6 +34,62 @@
   background: #5856D6;
 }
 
+#y1 {
+  background: #FF3B30;
+}
+
+#y2 {
+  background: #FF9500;
+}
+
+#y3 {
+  background: #FFCC00;
+}
+
+#y4 {
+  background: #4CD964;
+}
+
+#y5 {
+  background: #5AC8FA;
+}
+
+#y6 {
+  background: #007AFF;
+}
+
+#y7 {
+  background: #5856D6;
+}
+
+#z1 {
+  background: #FF3B30;
+}
+
+#z2 {
+  background: #FF9500;
+}
+
+#z3 {
+  background: #FFCC00;
+}
+
+#z4 {
+  background: #4CD964;
+}
+
+#z5 {
+  background: #5AC8FA;
+}
+
+#z6 {
+  background: #007AFF;
+}
+
+#z7 {
+  background: #5856D6;
+}
+
 .bar:nth-child(1) {
   position: absolute;
   top: 0px;
@@ -78,7 +134,7 @@
 
 .day-name-dial, .month-dial, .day-dial {
   position: absolute;
-  top: 50%;
+  top: 140px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
@@ -124,7 +180,7 @@ h2 {
 
 .center-dial {
   position: absolute;
-  top: calc(50% - 37.5px);
+  top: 101px;
   left: calc(50% - 37.5px);
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -1756,21 +1812,22 @@ h2 {
 
 #weather {
   position: absolute;
-  top: calc(70% - 20px);
-  left: calc(20% - 55px);
+  opacity: 0;
+}
+
+#dayTemps {
+  position: absolute;
+  opacity: 0;
 }
 
 #music {
-  opacity: 0;
   position: absolute;
-  top: calc(70% - 0px);
-  left: calc(50% - 50px);
+  opacity: 0;
 }
 
 #stats {
   position: absolute;
-  top: calc(70% - 20px);
-  left: calc(80% - 45px);
+  opacity: 0;
 }
 
 .icon {
@@ -1835,6 +1892,32 @@ h2 {
   bottom: 15px;
   left: .5px;
   width: 8px;
+  height: 1px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.y {
+  position: absolute;
+  bottom: 15px;
+  left: .5px;
+  width: 4px;
+  height: 1px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.z {
+  position: absolute;
+  bottom: 15px;
+  left: 4px;
+  width: 4px;
   height: 1px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

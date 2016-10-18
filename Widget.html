@@ -6,7 +6,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Groovalicious by SPQRGuyMontag</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -56,8 +55,7 @@
       <p class='temperature' id='temperature'>43</p>
     </div>
     <div class='side-ring' id='music'>
-      <div class='artwork' id="artwork"><img id='art' src="images/wx/27.svg" height="60"></img></div>
-      <p class='h2' id='artist'>Prince</p>
+      <div class='artwork' id="artwork"><img id='art'></img></div>
     </div>
     <div class='side-ring' id='stats'>
       <div class='bars'>
@@ -74,7 +72,7 @@
           <div class='x' id='x3'></div>
         </div>
         <div class='bar'>
-          <div class='day-letter' id='signal'>C</div>
+          <div class='day-letter' id='signal'>S</div>
           <div class='x' id='x4'></div>
         </div>
         <div class='bar'>
@@ -91,8 +89,40 @@
         </div>
       </div>
     </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.6.1/jquery.lettering.min.js'></script>
+    <div class='side-ring' id='dayTemps'>
+      <div class='bars'>
+        <div class='bar'>
+          <div class='day-letter' id='day1'>S</div>
+          <div class='y' id='y1'></div><div class='z' id='z1'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day2'>M</div>
+          <div class='y' id='y2'></div><div class='z' id='z2'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day3'>T</div>
+          <div class='y' id='y3'></div><div class='z' id='z3'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day4'>W</div>
+          <div class='y' id='y4'></div><div class='z' id='z4'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day5'>T</div>
+          <div class='y' id='y5'></div><div class='z' id='z5'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day6'>F</div>
+          <div class='y' id='y6'></div><div class='z' id='z6'></div>
+        </div>
+        <div class='bar'>
+          <div class='day-letter' id='day7'>S</div>
+          <div class='y' id='y7'></div><div class='z' id='z7'></div>
+        </div>
+      </div>
+    </div>
+    <script src='js/jquery-3.1.1.min.js'></script>
+    <script src='js/jquery.lettering.js'></script>
     <script src="js/index.js"></script>
     <script type="text/cycript">
       //<![CDATA[
@@ -103,19 +133,127 @@
       var statsUpdateTime = statsUpdateTimeOp;
       var twentyfourhour = twentyfourhourOp;
       var widgetLanguage = widgetLanguageOp;
-      var useStats = useStatsOp;
-      var useAlbumArt = useAlbumArtOp;
-      var useWeather = useWeatherOp;
       var wxRefresh = wxRefreshOp;
+      var ringOne = ringOneOp;
+      var ringTwo = ringTwoOp;
+      var ringThree = ringThreeOp;
+      var ringFour = ringFourOp;
+      var useWeather = false;
+      var useStats = false;
+      var useDayTemps = false;
+      var useMusic = false;
 
       //initializes widget
       window.onload = function() {
 
+        if(ringOne === "weather"){
+          useWeather = true;
+          document.getElementById("weather").style.top = "160px";
+          document.getElementById("weather").style.left = "10px";
+          document.getElementById("weather").style.opacity = 1;
+          document.getElementById("weather").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringOne === "stats"){
+          useStats = true;
+          document.getElementById("stats").style.top = "160px";
+          document.getElementById("stats").style.left = "10px";
+          document.getElementById("stats").style.opacity = 1;
+          document.getElementById("stats").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringOne === "dayTemps"){
+          useDayTemps = true;
+          document.getElementById("dayTemps").style.top = "160px";
+          document.getElementById("dayTemps").style.left = "10px";
+          document.getElementById("dayTemps").style.opacity = 1;
+          document.getElementById("dayTemps").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringOne === "music"){
+          useMusic = true;
+          document.getElementById("music").style.top = "160px";
+          document.getElementById("music").style.left = "10px";
+          document.getElementById("music").style.opacity = 1;
+          document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }
+
+        if(ringTwo === "weather"){
+          useWeather = true;
+          document.getElementById("weather").style.top = "160px";
+          document.getElementById("weather").style.right = "10px";
+          document.getElementById("weather").style.opacity = 1;
+          document.getElementById("weather").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringTwo === "stats"){
+          useStats = true;
+          document.getElementById("stats").style.top = "160px";
+          document.getElementById("stats").style.right = "10px";
+          document.getElementById("stats").style.opacity = 1;
+          document.getElementById("stats").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringTwo === "dayTemps"){
+          useDayTemps = true;
+          document.getElementById("dayTemps").style.top = "160px";
+          document.getElementById("dayTemps").style.right = "10px";
+          document.getElementById("dayTemps").style.opacity = 1;
+          document.getElementById("dayTemps").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringTwo === "music"){
+          useMusic = true;
+          document.getElementById("music").style.top = "160px";
+          document.getElementById("music").style.right = "10px";
+          document.getElementById("music").style.opacity = 1;
+          document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }
+
+        if(ringThree === "weather"){
+          useWeather = true;
+          document.getElementById("weather").style.top = "10px";
+          document.getElementById("weather").style.right = "10px";
+          document.getElementById("weather").style.opacity = 1;
+          document.getElementById("weather").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringThree === "stats"){
+          useStats = true;
+          document.getElementById("stats").style.top = "10px";
+          document.getElementById("stats").style.right = "10px";
+          document.getElementById("stats").style.opacity = 1;
+          document.getElementById("stats").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringThree === "dayTemps"){
+          useDayTemps = true;
+          document.getElementById("dayTemps").style.top = "10px";
+          document.getElementById("dayTemps").style.right = "10px";
+          document.getElementById("dayTemps").style.opacity = 1;
+          document.getElementById("dayTemps").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringThree === "music"){
+          useMusic = true;
+          document.getElementById("music").style.top = "10px";
+          document.getElementById("music").style.right = "10px";
+          document.getElementById("music").style.opacity = 1;
+          document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }
+
+        if(ringFour === "weather"){
+          useWeather = true;
+          document.getElementById("weather").style.top = "10px";
+          document.getElementById("weather").style.left = "10px";
+          document.getElementById("weather").style.opacity = 1;
+          document.getElementById("weather").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringFour === "stats"){
+          useStats = true;
+          document.getElementById("stats").style.top = "10px";
+          document.getElementById("stats").style.left = "10px";
+          document.getElementById("stats").style.opacity = 1;
+          document.getElementById("stats").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringFour === "dayTemps"){
+          useDayTemps = true;
+          document.getElementById("dayTemps").style.top = "10px";
+          document.getElementById("dayTemps").style.left = "10px";
+          document.getElementById("dayTemps").style.opacity = 1;
+          document.getElementById("dayTemps").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }else if(ringFour === "music"){
+          useMusic = true;
+          document.getElementById("music").style.top = "10px";
+          document.getElementById("music").style.left = "10px";
+          document.getElementById("music").style.opacity = 1;
+          document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
+        }
         if(useStats){
           updateStats();
         }
 
-        if(useWeather){
+        if(useWeather || useDayTemps){
           //registers widget with IS2
           [IS2Weather registerForWeatherUpdatesWithIdentifier:widgetIdentifier andCallback:^ void () {
             updateWx();
@@ -123,7 +261,7 @@
           [IS2Weather setWeatherUpdateTimeInterval:wxRefresh forRequester:widgetIdentifier];
         }
 
-        if(useAlbumArt){
+        if(useMusic){
           //registers widget for media updates
           [IS2Media registerForNowPlayingNotificationsWithIdentifier:widgetIdentifier andCallback:^ void () {
               updateMedia();
@@ -138,12 +276,6 @@
         [IS2Media unregisterForNotificationsWithIdentifier:widgetIdentifier];
         return null;
       };
-
-      //calls IS2 weather update on a timer
-      function refreshWx(){
-        [IS2Weather updateWeather];
-        setTimeout(refreshWx, wxRefresh * 60 * 1000);
-      }
 
       // Give column representing passed days and the current day this week a height
       function updateStats() {
@@ -171,6 +303,32 @@
           setTimeout(updateStats, statsUpdateTime);
       }
 
+      function getDay(d){
+        switch (d) {
+          case 1:
+              return "S";
+              break;
+          case 2:
+              return "M";
+              break;
+          case 3:
+              return "T";
+              break;
+          case 4:
+              return "W";
+              break;
+          case 5:
+              return "T";
+              break;
+          case 6:
+              return "F";
+              break;
+          case 7:
+              return "S";
+        }
+      }
+
+      //updates weather
       function updateWx(){
         var elem = document.getElementById("wxicon");
         elem.setAttribute("height", "60");
@@ -179,8 +337,29 @@
         document.getElementById("icon").appendChild(elem);
         document.getElementById("temperature").innerHTML = [IS2Weather currentTemperature] + "&deg";
         document.getElementById("temperature").style.color = tempColor([IS2Weather currentTemperature])
+        if(useDayTemps){
+          var dayArray = JSON.parse("" + [IS2Weather dayForecastsForCurrentLocationJSON]);
+          for(var i = 1; i <= 7; i++){
+            document.getElementById("day"+i).innerHTML = getDay(dayArray[i].dayOfWeek);
+            var newHigh = Math.abs(dayArray[i].high) * .4;
+            $("#y"+i).css({
+              'height' : newHigh + 'px',
+            });
+            $("#y"+i).css({
+              'background' : tempColor(dayArray[i].high),
+            });
+            var newLow = Math.abs(dayArray[i].low) * .4;
+            $("#z"+i).css({
+              'height' : newLow + 'px',
+            });
+            $("#z"+i).css({
+              'background' : tempColor(dayArray[i].low),
+            });
+          }
+        }
       }
 
+      //changes temp color based on range
       function tempColor(c){
         if([IS2Weather isCelsius]){
           if(c < -20){
@@ -190,9 +369,9 @@
           }else if(c >= -5 && c < 5){
             return "#5AC8FA";
           }else if(c >= 5 && c < 15){
-            return "#4CD964";
+            return "#CEEEFD";
           }else if(c >= 15 && c < 27){
-            return "#FFCC00";
+            return "#4CD964";
           }else if(c >= 27 && c < 38){
             return "#FF9500";
           }else if(c > 38){
@@ -206,9 +385,9 @@
           }else if(c >= 20 && c < 40){
             return "#5AC8FA";
           }else if(c >= 40 && c < 60){
-            return "#4CD964";
+            return "#CEEEFD";
           }else if(c >= 60 && c < 80){
-            return "#FFCC00";
+            return "#4CD964";
           }else if(c >= 80 && c < 100){
             return "#FF9500";
           }else if(c > 100){
@@ -217,6 +396,7 @@
         }
       }
 
+      //adjusts color and opacity of dials
       document.getElementById("r1").style.borderColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
       document.getElementById("r1").style.borderBottomColor = "transparent";
       document.getElementById("r2").style.borderColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
@@ -224,26 +404,29 @@
       document.getElementById("r3").style.borderColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
       document.getElementById("r3").style.borderBottomColor = "transparent";
       document.getElementById("center-dial").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
-      document.getElementById("weather").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
-      document.getElementById("stats").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
 
+      //colors dial text
       var h2Elements = document.getElementsByTagName("h2");
       for(var i = 0; i < h2Elements.length; i++){
         h2Elements[i].style.color = textColor;
       }
 
+      //updates media info
       function updateMedia(){
         document.getElementById("music").style.opacity = 1;
-        document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
         var elem = document.getElementById("art");
         elem.setAttribute("height", "60");
         elem.setAttribute("width", "60");
         elem.setAttribute("src", "" + [IS2Media currentTrackArtworkBase64] + "");
         document.getElementById("artwork").appendChild(elem);
+        document.getElementById("music").style.backgroundColor = "rgba("+rgb+", "+rgb+", "+rgb+", " + widgetOpacity + ")";
       }
 
+      //colors text
       document.getElementById("stats").style.color = textColor;
+      document.getElementById("dayTemps").style.color = textColor;
 
+      //colors digital clock text
       if(rgb === "0"){
         document.getElementById("digital-hour").style.color = "white";
   			document.getElementById("digital-minute").style.color = "white";
@@ -254,6 +437,7 @@
         document.getElementById("digital-second").style.color = "red";
       }
 
+      //adjusts text according to language
       if(widgetLanguage === "nl"){
         document.getElementById("day-name-text").innerHTML = "ZON MAA DIN WOE DON VRI ZAT";
         document.getElementById("month-name-text").innerHTML = "JAN FEB MAR APR MEI JUN JUL AUG SEP OCT NOV DEC";
@@ -278,16 +462,6 @@
       }else if(widgetLanguage === "pt"){
         document.getElementById("day-name-text").innerHTML = "DOM SEG TER QUA QUI SEX SAB";
         document.getElementById("month-name-text").innerHTML = "JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ";
-      }
-
-      //hides stats ring
-      if(!useStats){
-        document.getElementById("stats").style.opacity = 0;
-      }
-
-      //hides weather ring
-      if(!useWeather){
-        document.getElementById("weather").style.opacity = 0;
       }
 
       //]]>
